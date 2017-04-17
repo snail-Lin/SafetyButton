@@ -18,6 +18,6 @@ let submitBtn: UIButton = {
 ```
 
 ### 我的博客地址
-[https://yihanv.com](https://yihanv.com)
+[http://yihanv.com](https://yihanv.com)
 
 
