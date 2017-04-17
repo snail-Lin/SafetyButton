@@ -17,7 +17,5 @@ let submitBtn: UIButton = {
     btn.clickedTime = -1
 ```
 
-### 我的博客地址
-[http://yihanv.com](https://yihanv.com)
 
 
