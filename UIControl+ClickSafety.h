@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIButton (ClickSafety)
+@interface UIControl (ClickSafety)
 @property (nonatomic, assign) NSTimeInterval clickedTime;
 @end

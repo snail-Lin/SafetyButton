@@ -6,9 +6,9 @@
 //  Copyright © 2017年 林亦涵. All rights reserved.
 //
 
-#import "UIButton+ClickSafety.h"
+#import "UIControl+ClickSafety.h"
 #import <objc/runtime.h>
-@implementation UIButton (ClickSafety)
+@implementation UIControl (ClickSafety)
 
 
 + (void)load {
@@ -48,6 +48,11 @@
 
 - (void)safetySendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event {
     
+    if (self.allTargets.count > 0) {
+        [self safetySendAction:action to:target forEvent:event];
+        return;
+    }
+    
     if (self.clickedTime == -1) {
         [self safetySendAction:action to:target forEvent:event];
         return;
@@ -59,7 +64,7 @@
     
     self.isClicked = YES;
     
-    NSInteger sec = self.clickedTime == 0 ? 0.7 * 1000 : self.clickedTime * 1000;
+    NSInteger sec = self.clickedTime == 0 ? 0.5 * 1000 : self.clickedTime * 1000;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, sec * NSEC_PER_MSEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         self.isClicked = NO;
